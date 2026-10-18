@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALEXANDERSEMU</title>
+<style>
+:root{color-scheme:dark;--bg:#080d17;--panel:#111a2a;--panel2:#0c1422;--line:#263750;--muted:#9aabc4;--text:#f2f6ff;--accent:#8af0d0;--accent2:#7db5ff}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 12% 0%,#18304b 0,transparent 42%),linear-gradient(145deg,#080d17,#0a1020 60%,#10182a);color:var(--text);font:15px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{max-width:1180px;margin:auto;padding:clamp(18px,4vw,42px) 16px 48px}header{padding:8px 0 26px}h1{font-size:clamp(2.2rem,7vw,4.3rem);line-height:1;letter-spacing:-.065em;margin:8px 0 14px;font-weight:900}.kicker,.eyebrow{color:var(--accent);font-size:.72rem;font-weight:850;letter-spacing:.18em;margin:0 0 7px}.muted{color:var(--muted);max-width:680px}.layout{display:grid;grid-template-columns:1fr;gap:16px}@media(min-width:850px){.layout{grid-template-columns:320px minmax(0,1fr)}}
+.panel{background:linear-gradient(155deg,rgba(20,31,49,.98),rgba(13,21,35,.98));border:1px solid var(--line);border-radius:20px;padding:clamp(16px,2.5vw,24px);min-width:0;box-shadow:0 16px 40px #0002}.panel h2{margin:0 0 16px;font-size:1.15rem;letter-spacing:-.02em}.panel-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}.panel-heading h2{margin:0 0 14px}.live-dot{border:1px solid #285d58;background:#102c2b;color:var(--accent);border-radius:99px;padding:5px 10px;font-size:.68rem;font-weight:850;letter-spacing:.1em}
+label{display:block;font-weight:750;margin:15px 0 7px;font-size:.88rem}select,input,button{font:inherit}select,input[type=file]{width:100%;padding:11px 12px;border-radius:11px;background:#09111e;border:1px solid #30415d;color:var(--text)}select:focus,input:focus,button:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}input[type=file]{font-size:.83rem}button{background:linear-gradient(110deg,var(--accent),#a8f5df);color:#06211d;border:0;border-radius:11px;padding:12px 16px;font-weight:900;cursor:pointer;width:100%;margin-top:14px;transition:transform .15s,filter .15s}button:hover:not(:disabled){filter:brightness(1.05);transform:translateY(-1px)}button:disabled{opacity:.4;cursor:not-allowed}
+#screen{background:#020407;border:1px solid #293951;border-radius:15px;overflow:hidden;min-height:300px;aspect-ratio:4/3;width:100%;box-shadow:inset 0 0 30px #0008}#status{white-space:pre-wrap;color:#d6e3ff;font-size:.88rem;background:#0a1321;border:1px solid #26364e;border-radius:11px;padding:11px 12px;margin-bottom:0}.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}.chip{border:1px solid #2c405b;background:#101b2c;border-radius:99px;padding:5px 10px;font-size:.75rem;color:#dce8ff}.small{font-size:.82rem;color:var(--muted)}.warning{border-left:3px solid #ffbf69;padding-left:12px}.footer{margin-top:18px;padding-top:4px}.footer h3,.save-panel h3{margin:0 0 7px;font-size:1rem}.library-panel{margin-top:16px}.library-tools{display:flex;gap:8px;align-items:center}.library-tools button{margin-top:0}.library-group{margin-top:14px}.library-group h3{margin:0 0 8px;font-size:.95rem;color:var(--accent2)}.library-game{display:flex;align-items:center;gap:10px;border:1px solid #293951;background:#0b1422;padding:10px;border-radius:12px;margin-top:7px}.library-game .game-info{flex:1;min-width:0}.library-game strong{display:block;overflow-wrap:anywhere}.library-game .small{margin:2px 0 0}.library-game button{width:auto;min-width:76px;margin:0;padding:8px 10px}.library-empty{border:1px dashed #30415d;padding:14px;border-radius:12px;color:var(--muted);font-size:.86rem}.save-panel{margin-top:16px;padding:15px;border-radius:14px;border:1px solid #29445a;background:linear-gradient(120deg,#10252c,#101b2c)}.save-panel p:last-child{margin-bottom:0}.eyebrow{font-size:.66rem;color:var(--accent2)}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div class="kicker">YOUR RETRO GAME HUB</div>
+<h1>ALEXANDERSEMU</h1>
+<p class="muted">One browser launcher for PS1, Nintendo 64, GBA, Sega Genesis, NES, SNES and MAME arcade games — with GameCube listed as a future system.</p>
+<div class="chips"><span class="chip">PS1 · PSX</span><span class="chip">N64 · Mupen64Plus</span><span class="chip">GBA · mGBA</span><span class="chip">Genesis · Mega Drive</span><span class="chip">NES · FCEUmm</span><span class="chip">SNES · Snes9x</span><span class="chip">MAME · Arcade</span><span class="chip">GameCube · Planned</span></div>
+</header>
+<div class="layout">
+<section class="panel">
+<h2>Game setup</h2>
+<label for="system">1. Choose console / system</label>
+<select id="system">
+<option value="psx">PlayStation 1 (PS1)</option>
+<option value="n64">Nintendo 64 (N64)</option>
+<option value="gba">Game Boy Advance (GBA)</option>
+<option value="genesis">Sega Genesis / Mega Drive</option>
+<option value="nes">Nintendo Entertainment System (NES)</option>
+<option value="snes">Super Nintendo (SNES)</option>
+<option value="mame">MAME arcade</option>
+<option value="gamecube" disabled>GameCube (not supported by current emulator)</option>
+</select>
+<label for="rom">2. Select game file(s)</label>
+<input id="rom" type="file" multiple accept=".chd,.cdi,.cue,.gdi,.bin,.raw,.iso,.zip,.7z,.pbp,.img,.ccd,.sub,.z64,.n64,.v64,.gba,.md,.gen,.bin,.nes,.sfc,.smc">
+<p class="small" id="formats"></p>
+<label for="bios">Optional BIOS file</label>
+<input id="bios" type="file">
+<p class="small">Only add a BIOS file if your selected emulator core/game needs one. Use game and BIOS files you are legally entitled to use.</p>
+<button id="launch" disabled>Launch game</button>
+<p id="status" role="status">Choose a system and select your game file(s).</p>
+<div class="library-panel"><div class="panel-heading"><h2>My game library</h2><span class="live-dot" id="library-count">0 SAVED</span></div><p class="small">Games are added here after the emulator reports that they started. Saved game files stay in this browser on this device, so you can replay them without uploading again.</p><div id="library-list"><div class="library-empty">No working games saved yet. Launch a game and wait for it to start.</div></div><button id="clear-library" type="button" style="background:#25334a;color:#eaf1ff">Clear saved library</button></div>
+</section>
+<section class="panel game-panel">
+<div class="panel-heading"><div><p class="eyebrow">NOW PLAYING</p><h2>Game screen</h2></div><span class="live-dot">READY</span></div>
+<div id="screen" aria-label="Emulator screen"></div>
+<div class="save-panel"><div><p class="eyebrow">PROGRESS</p><h3>Save states</h3><p class="small">Use the EmulatorJS in-game menu to save or load a state. Open the emulator menu while a game is running and choose its save-state or load-state option. These controls are provided by the emulator core, so availability varies by system.</p></div></div>
+<div class="footer">
+<h3>Controls</h3>
+<p class="small">A USB/Bluetooth gamepad is recommended. Open the emulator's settings/controls menu after it loads to check keyboard and controller mappings.</p>
+<p class="small warning">The launcher currently downloads EmulatorJS from the internet. GameCube needs a separate compatible emulator such as Dolphin and is not playable through the current EmulatorJS setup. Genesis support depends on the available EmulatorJS core build. MAME compatibility depends on the ROM set version and may require additional BIOS/device ROMs.</p>
+</div>
+</section>
+</div>
+<p class="small">No commercial game ROMs or BIOS files are included. Use your own legally obtained files. Save states are handled by the emulator menu. GameCube is listed as planned but is not enabled because the current emulator does not support it.</p>
+</main>
+<script>
+(() => {
+ const system=document.getElementById('system'), rom=document.getElementById('rom'), bios=document.getElementById('bios');
+ const launch=document.getElementById('launch'), status=document.getElementById('status'), formats=document.getElementById('formats');
+ const libraryList=document.getElementById('library-list'), libraryCount=document.getElementById('library-count');
+ let files=[],biosFile=null,objectUrls=[],db=null,currentGame=null,launchingFromLibrary=false;
+ const config={
+  psx:{core:'psx',label:'PlayStation 1',ext:'CHD, PBP, ISO, or a complete CUE + all referenced BIN tracks',accept:['chd','pbp','iso','cue','bin','img','ccd','sub']},
+  n64:{core:'n64',label:'Nintendo 64',ext:'Z64, N64, or V64 ROM',accept:['z64','n64','v64','zip']},
+  gba:{core:'gba',label:'Game Boy Advance',ext:'GBA ROM (.gba; some builds accept .zip)',accept:['gba','zip']},
+  genesis:{core:'segaMD',label:'Sega Genesis / Mega Drive',ext:'Genesis/Mega Drive ROM (.md, .gen, .bin; some builds accept .zip)',accept:['md','gen','bin','zip']},
+  nes:{core:'nes',label:'NES',ext:'NES ROM (usually .nes; some cores accept .zip)',accept:['nes','zip']},
+  snes:{core:'snes',label:'SNES',ext:'SNES ROM (.sfc, .smc; some cores accept .zip)',accept:['sfc','smc','zip']},
+  mame:{core:'arcade',label:'MAME arcade',ext:'Arcade ROM ZIP matching the core/version; keep required ROMs zipped',accept:['zip','7z']}
+ };
+ const requestDB=()=>new Promise((resolve,reject)=>{const r=indexedDB.open('AlexanderSemuLibrary',1);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains('games'))r.result.createObjectStore('games',{keyPath:'id'});};r.onsuccess=()=>{db=r.result;resolve(db)};r.onerror=()=>reject(r.error)});
+ const txStore=(mode)=>db.transaction('games',mode).objectStore('games');
+ const getAll=()=>new Promise((resolve,reject)=>{const r=txStore('readonly').getAll();r.onsuccess=()=>resolve(r.result||[]);r.onerror=()=>reject(r.error)});
+ const saveRecord=(record)=>new Promise((resolve,reject)=>{const r=txStore('readwrite').put(record);r.onsuccess=()=>resolve();r.onerror=()=>reject(r.error)});
+ const deleteRecord=(id)=>new Promise((resolve,reject)=>{const r=txStore('readwrite').delete(id);r.onsuccess=()=>resolve();r.onerror=()=>reject(r.error)});
+ function extOf(f){return f.name.toLowerCase().split('.').pop();}
+ function update(){formats.textContent='Supported formats: '+config[system.value].ext+'.';launch.disabled=files.length===0;status.textContent=files.length?`Selected ${files.length} file(s):\n${files.map(f=>f.name).join('\n')}\nSystem: ${config[system.value].label}`:'Choose a system and select your game file(s).';}
+ function safeText(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+ async function renderLibrary(){
+  if(!db)return;const games=(await getAll()).sort((a,b)=>(b.lastPlayed||0)-(a.lastPlayed||0));libraryCount.textContent=games.length+' SAVED';
+  if(!games.length){libraryList.innerHTML='<div class="library-empty">No working games saved yet. Launch a game and wait for it to start.</div>';return;}
+  const groups={};for(const g of games)(groups[g.system]||(groups[g.system]=[])).push(g);
+  libraryList.innerHTML=Object.keys(config).filter(k=>groups[k]).map(k=>`<div class="library-group"><h3>${safeText(config[k].label)} · ${groups[k].length}</h3>${groups[k].map(g=>`<div class="library-game"><div class="game-info"><strong>${safeText(g.name)}</strong><p class="small">Last played: ${new Date(g.lastPlayed||g.savedAt).toLocaleDateString()} · ${g.files.length} file(s)</p></div><button type="button" data-play="${safeText(g.id)}">Play</button><button type="button" data-delete="${safeText(g.id)}" style="background:#25334a;color:#eaf1ff;min-width:38px" aria-label="Delete ${safeText(g.name)}">×</button></div>`).join('')}</div>`).join('');
+  libraryList.querySelectorAll('[data-play]').forEach(b=>b.addEventListener('click',()=>playSaved(b.dataset.play)));
+  libraryList.querySelectorAll('[data-delete]').forEach(b=>b.addEventListener('click',async()=>{await deleteRecord(b.dataset.delete);await renderLibrary();}));
+ }
+ system.addEventListener('change',update);rom.addEventListener('change',()=>{files=Array.from(rom.files||[]);update();});bios.addEventListener('change',()=>{biosFile=bios.files&&bios.files[0]||null;});
+ launch.addEventListener('click',()=>{if(!files.length)return;const cfg=config[system.value];const primary=files.find(f=>cfg.accept.includes(extOf(f)));if(!primary){status.textContent='No supported game file selected for '+cfg.label+'. Check the file extension and try again.';return;}if(system.value==='psx'&&extOf(primary)==='bin'&&!files.some(f=>extOf(f)==='cue')){status.textContent='For a multi-track PS1 game, select the CUE file and all its BIN tracks together. The CUE is the disc index.';return;}if(system.value==='mame'&&!['zip','7z'].includes(extOf(primary))){status.textContent='MAME games are usually provided as a ROM ZIP. Select the game ZIP and keep any required BIOS/device ROM ZIPs available.';return;}currentGame={id:system.value+'-'+primary.name+'-'+Date.now(),system:system.value,name:primary.name,files:files.map(f=>({name:f.name,type:f.type||'application/octet-stream',blob:f})),savedAt:Date.now(),lastPlayed:Date.now()};launchGameFiles(primary,files);});
+ function launchGameFiles(primary,bundle){launch.disabled=true;status.textContent='Preparing game files for EmulatorJS…';objectUrls.forEach(URL.revokeObjectURL);objectUrls=[];const urls={};bundle.forEach(f=>{urls[f.name]=URL.createObjectURL(f);objectUrls.push(urls[f.name]);});const gameUrl=urls[primary.name];delete window.EJS_externalFiles;window.EJS_player='#screen';window.EJS_core=config[system.value].core;window.EJS_gameUrl=gameUrl;window.EJS_pathtodata='https://cdn.emulatorjs.org/stable/data/';window.EJS_gameName=primary.name;window.EJS_startOnLoaded=true;if(biosFile){window.EJS_biosUrl=URL.createObjectURL(biosFile);objectUrls.push(window.EJS_biosUrl);}window.EJS_onGameStart=async()=>{status.textContent='Game started! Saving it to your library…';if(currentGame){currentGame.lastPlayed=Date.now();try{await saveRecord(currentGame);await renderLibrary();status.textContent='Game started and saved to My game library. You can play it again without selecting the files again.';}catch(e){status.textContent='Game started, but this browser could not save it. Check available storage / site permissions.';}}launch.disabled=false;};const old=document.getElementById('emulatorjs-loader');if(old)old.remove();const script=document.createElement('script');script.id='emulatorjs-loader';script.src='https://cdn.emulatorjs.org/stable/data/loader.js';script.onerror=()=>{status.textContent='Emulator failed to load. Check your internet connection, then reload this page.';launch.disabled=false;};script.onload=()=>{status.textContent='Emulator loaded; attempting to start '+config[system.value].label+' game…';};document.body.appendChild(script);}
+ async function playSaved(id){const games=await getAll();const g=games.find(x=>x.id===id);if(!g)return;system.value=g.system;files=g.files.map(x=>new File([x.blob],x.name,{type:x.type}));rom.value='';update();const primary=files.find(f=>config[g.system].accept.includes(extOf(f)))||files[0];currentGame=g;currentGame.lastPlayed=Date.now();launchGameFiles(primary,files);status.textContent='Loading saved game: '+g.name;}
+ document.getElementById('clear-library').addEventListener('click',async()=>{if(!db)return;if(!confirm('Delete all saved games from this browser? This cannot be undone.'))return;const tx=db.transaction('games','readwrite');tx.objectStore('games').clear();tx.oncomplete=renderLibrary;});
+ requestDB().then(renderLibrary).catch(()=>{libraryList.innerHTML='<div class="library-empty">This browser could not enable saved storage. Try opening the HTML in a browser that allows IndexedDB.</div>';});update();
+})();
+</script>
+</body>
+</html>
